@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Condominio Cumbre · El Marqués, Querétaro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noche:#1E2A33;
+    --noche-2:#263642;
+    --piedra:#EDE6D9;
+    --piedra-2:#E3DACB;
+    --cantera:#B5502E;
+    --dorado:#B98A3D;
+    --verde:#55624A;
+    --blanco:#FFFCF7;
+    --texto:#26241f;
+    --gris:#burlywood;
+    --line:rgba(185,138,61,0.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--piedra);
+    color:var(--texto);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Fraunces',serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(30,42,51,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{color:var(--blanco);font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;letter-spacing:0.02em;}
+  .brand small{display:block;font-family:'Work Sans',sans-serif;font-weight:400;font-size:0.62rem;letter-spacing:0.22em;color:var(--dorado);margin-top:2px;}
+  .nav-cta{
+    background:var(--cantera);color:var(--blanco);
+    padding:10px 20px;border-radius:2px;font-size:0.85rem;font-weight:600;
+    border:1px solid transparent;transition:.25s;
+  }
+  .nav-cta:hover{background:var(--dorado);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--noche);
+    color:var(--blanco);
+    padding:9vw 6vw 7vw;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:56px 56px;
+    opacity:.35;
+    mask-image:radial-gradient(ellipse at 70% 30%, black 10%, transparent 70%);
+  }
+  .hero-inner{position:relative;max-width:1180px;margin:0 auto;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.28em;
+    color:var(--dorado);text-transform:uppercase;margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,6.2vw,5rem);
+    font-weight:600;
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:italic;font-weight:400;color:var(--dorado);
+  }
+  .hero p.lead{
+    margin-top:26px;max-width:44ch;font-size:1.08rem;line-height:1.6;color:#D9D2C4;
+  }
+  .hero-cta-row{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{
+    background:var(--dorado);color:var(--noche);font-weight:700;
+    padding:15px 30px;border-radius:2px;font-size:0.95rem;
+    display:inline-flex;align-items:center;gap:10px;transition:.25s;
+  }
+  .btn-primary:hover{background:var(--blanco);}
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,0.35);color:var(--blanco);
+    padding:14px 26px;border-radius:2px;font-size:0.9rem;transition:.25s;
+  }
+  .btn-ghost:hover{border-color:var(--dorado);color:var(--dorado);}
+
+  .hero-stats{
+    margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+  }
+  .hero-stats div{padding:22px 20px 0;border-left:1px solid var(--line);}
+  .hero-stats div:first-child{border-left:none;padding-left:0;}
+  .hero-stats .num{font-family:'Fraunces',serif;font-size:2rem;color:var(--dorado);}
+  .hero-stats .lbl{font-size:0.75rem;color:#B9B2A2;margin-top:4px;letter-spacing:0.02em;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:6.5vw 6vw;max-width:1180px;margin:0 auto;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head .eyebrow{color:var(--cantera);}
+  .section-head h2{
+    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3.4vw,2.6rem);
+    line-height:1.1;color:var(--noche);
+  }
+  .section-head p{margin-top:14px;color:#5b5548;font-size:1rem;line-height:1.6;}
+
+  /* ---------- COMPARATOR (signature element) ---------- */
+  .comparator{display:flex;flex-direction:column;gap:14px;}
+  .model-row{
+    background:var(--noche);color:var(--blanco);
+    border-radius:3px;padding:26px 28px;
+    display:grid;grid-template-columns:140px 1fr 200px;gap:28px;align-items:center;
+    position:relative;overflow:hidden;
+    border:1px solid transparent;
+  }
+  .model-row.best{border-color:var(--dorado);}
+  .model-name{font-family:'Fraunces',serif;font-size:1.7rem;}
+  .model-name .tag{
+    display:block;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;
+    letter-spacing:0.18em;color:var(--dorado);margin-top:6px;text-transform:uppercase;
+  }
+  .plan-viz{position:relative;height:64px;display:flex;align-items:flex-end;}
+  .plan-bar{
+    height:14px;background:linear-gradient(90deg,var(--dorado),var(--cantera));
+    position:relative;border-radius:1px;
+  }
+  .plan-bar::before,.plan-bar::after{
+    content:"";position:absolute;top:-8px;bottom:-8px;width:1px;background:var(--line);
+  }
+  .plan-bar::before{left:0;}
+  .plan-bar::after{right:0;}
+  .plan-dim{
+    font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:#B9B2A2;
+    position:absolute;top:-24px;left:0;
+  }
+  .plan-meta{display:flex;gap:18px;margin-top:10px;font-size:0.78rem;color:#B9B2A2;}
+  .plan-meta b{color:var(--blanco);font-weight:600;}
+  .price-block{text-align:right;}
+  .price-block .price{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--blanco);}
+  .price-block .permsq{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--dorado);margin-top:6px;}
+  .badge-best{
+    position:absolute;top:0;right:0;background:var(--dorado);color:var(--noche);
+    font-size:0.62rem;letter-spacing:0.14em;font-weight:700;padding:5px 12px 5px 14px;
+    border-bottom-left-radius:3px;
+  }
+  @media(max-width:760px){
+    .model-row{grid-template-columns:1fr;gap:14px;}
+    .price-block{text-align:left;}
+  }
+
+  /* ---------- PROMO BAND ---------- */
+  .promo{
+    background:var(--cantera);color:var(--blanco);
+    padding:52px 6vw;text-align:center;
+  }
+  .promo .eyebrow{color:rgba(255,255,255,0.75);}
+  .promo h3{font-family:'Fraunces',serif;font-size:clamp(1.6rem,3.6vw,2.4rem);margin-top:10px;}
+  .promo p{margin-top:12px;color:rgba(255,255,255,0.85);max-width:52ch;margin-left:auto;margin-right:auto;}
+  .promo .btn-primary{margin-top:24px;background:var(--noche);color:var(--blanco);}
+  .promo .btn-primary:hover{background:var(--blanco);color:var(--noche);}
+
+  /* ---------- AMENITIES ---------- */
+  .amen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--piedra-2);border:1px solid var(--piedra-2);}
+  .amen-item{background:var(--piedra);padding:30px 22px;}
+  .amen-item svg{width:26px;height:26px;stroke:var(--cantera);margin-bottom:16px;}
+  .amen-item h4{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--noche);}
+  @media(max-width:760px){.amen-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- FINANCING ---------- */
+  .financing{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--piedra-2);border:1px solid var(--piedra-2);}
+  .fin-item{background:var(--blanco);padding:32px 26px;}
+  .fin-item .mono{font-size:0.7rem;letter-spacing:0.16em;color:var(--dorado);}
+  .fin-item h4{font-family:'Fraunces',serif;font-size:1.2rem;margin-top:8px;color:var(--noche);}
+  .fin-item p{margin-top:8px;font-size:0.88rem;color:#5b5548;line-height:1.55;}
+  @media(max-width:760px){.financing{grid-template-columns:1fr;}}
+
+  /* ---------- LOCATION ---------- */
+  .loc{background:var(--noche);color:var(--blanco);}
+  .loc .section-head h2{color:var(--blanco);}
+  .loc .section-head p{color:#B9B2A2;}
+  .loc-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);max-width:640px;}
+  .loc-list div{
+    display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--line);
+  }
+  .loc-list span:first-child{color:#D9D2C4;}
+  .loc-list span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--dorado);font-size:0.85rem;}
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{
+    background:var(--piedra-2);padding:64px 6vw 40px;
+  }
+  .footer-grid{
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:1.3fr 1fr;gap:48px;
+    border-bottom:1px solid #D2C9B6;padding-bottom:40px;
+  }
+  .footer-grid h3{font-family:'Fraunces',serif;font-size:2rem;color:var(--noche);max-width:16ch;}
+  .footer-grid p{margin-top:14px;color:#5b5548;max-width:44ch;line-height:1.6;}
+  .agent-card{background:var(--noche);color:var(--blanco);padding:32px;border-radius:3px;}
+  .agent-card .name{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--dorado);}
+  .agent-card .role{font-size:0.85rem;color:#B9B2A2;margin-top:4px;}
+  .agent-card .btn-primary{width:100%;justify-content:center;margin-top:22px;}
+  .agent-card .contact-line{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:0.82rem;color:#D9D2C4;}
+  .foot-legal{max-width:1180px;margin:24px auto 0;font-size:0.75rem;color:#8a8272;}
+
+  @media(max-width:760px){
+    .footer-grid{grid-template-columns:1fr;}
+    .hero-stats{grid-template-columns:repeat(2,1fr);row-gap:26px;}
+    .hero-stats div:nth-child(3){border-left:none;padding-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">CONDOMINIO CUMBRE<small>Cumbres del Marqués · Querétaro</small></div>
+  <a class="nav-cta" href="#contacto">Agendar visita</a>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Privada exclusiva · El Marqués</div>
+    <h1 class="serif">Tu próxima casa<br>no tiene que ser<br><em>pequeña.</em></h1>
+    <p class="lead">Cinco modelos de 3 recámaras, hasta 119&nbsp;m² de construcción, a minutos del Ecocentro Expositor y de la zona de mayor plusvalía de El Marqués.</p>
+    <div class="hero-cta-row">
+      <a class="btn-primary" href="#contacto">Agendar visita por WhatsApp →</a>
+      <a class="btn-ghost" href="#modelos">Ver los 5 modelos</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="num mono">5</div><div class="lbl">Modelos disponibles</div></div>
+      <div><div class="num mono">119 m²</div><div class="lbl">Construcción máxima</div></div>
+      <div><div class="num mono">3</div><div class="lbl">Recámaras en todos los modelos</div></div>
+      <div><div class="num mono">$100K</div><div class="lbl">Bono + cocina de regalo</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="modelos">
+  <div class="section-head">
+    <div class="eyebrow mono">Comparativa · Precios de lista</div>
+    <h2>Elige tu plano</h2>
+    <p>Cada barra representa el tamaño de construcción a escala real entre modelos, para que compares de un vistazo cuánta casa estás comprando.</p>
+  </div>
+
+  <div class="comparator">
+
+    <div class="model-row">
+      <div class="model-name">Roma<span class="tag">Entrada</span></div>
+      <div class="plan-viz">
+        <div class="plan-bar" style="width:68%;">
+          <div class="plan-dim">81 m² construcción · 85.85 m² terreno</div>
+        </div>
+      </div>
+      <div class="price-block">
+        <div class="price mono">$2,467,742</div>
+        <div class="permsq">$30,466 / m²</div>
+      </div>
+      <div class="plan-meta" style="grid-column:2;margin-top:-6px;"><span><b>3</b> recámaras</span><span><b>2½</b> baños</span><span>Recámara en PB</span></div>
+    </div>
+
+    <div class="model-row">
+      <div class="model-name">Málaga<span class="tag">Suite doble</span></div>
+      <div class="plan-viz">
+        <div class="plan-bar" style="width:84%;">
+          <div class="plan-dim">100.45 m² construcción · 108 m² terreno</div>
+        </div>
+      </div>
+      <div class="price-block">
+        <div class="price mono">$2,753,688</div>
+        <div class="permsq">$27,411 / m²</div>
+      </div>
+      <div class="plan-meta" style="grid-column:2;margin-top:-6px;"><span><b>3</b> recámaras</span><span><b>3½</b> baños</span><span>Suite en PB</span></div>
+    </div>
+
+    <div class="model-row">
+      <div class="model-name">Berlín<span class="tag">Clásico</span></div>
+      <div class="plan-viz">
+        <div class="plan-bar" style="width:83%;">
+          <div class="plan-dim">99.54 m² construcción · 108 m² terreno</div>
+        </div>
+      </div>
+      <div class="price-block">
+        <div class="price mono">$2,827,957</div>
+        <div class="permsq">$28,412 / m²</div>
+      </div>
+      <div class="plan-meta" style="grid-column:2;margin-top:-6px;"><span><b>3</b> recámaras</span><span><b>2½</b> baños</span></div>
+    </div>
+
+    <div class="model-row">
+      <div class="model-name">Viena<span class="tag">Family room</span></div>
+      <div class="plan-viz">
+        <div class="plan-bar" style="width:94%;">
+          <div class="plan-dim">112.44 m² construcción · 108 m² terreno</div>
+        </div>
+      </div>
+      <div class="price-block">
+        <div class="price mono">$3,000,000</div>
+        <div class="permsq">$26,682 / m²</div>
+      </div>
+      <div class="plan-meta" style="grid-column:2;margin-top:-6px;"><span><b>3</b> recámaras</span><span><b>2½</b> baños</span><span>+ Family room</span></div>
+    </div>
+
+    <div class="model-row best">
+      <div class="badge-best">MEJOR VALOR</div>
+      <div class="model-name">Praga<span class="tag">La más grande</span></div>
+      <div class="plan-viz">
+        <div class="plan-bar" style="width:100%;">
+          <div class="plan-dim">119.11 m² construcción · 108 m² terreno</div>
+        </div>
+      </div>
+      <div class="price-block">
+        <div class="price mono">$2,956,989</div>
+        <div class="permsq">$24,825 / m²</div>
+      </div>
+      <div class="plan-meta" style="grid-column:2;margin-top:-6px;"><span><b>3</b> recámaras</span><span><b>2½</b> baños</span><span>Mayor construcción del catálogo</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="promo">
+  <div class="eyebrow mono">Oferta por tiempo limitado</div>
+  <h3 class="serif">$100,000 de bono + cocina de regalo</h3>
+  <p>Válido solo para las próximas 3 ubicaciones disponibles. Aplica sobre precio de lista en cualquiera de los 5 modelos.</p>
+  <a class="btn-primary" href="#contacto">Apartar mi lugar →</a>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow mono">Vida en la privada</div>
+    <h2>Amenidades pensadas para el día a día</h2>
+  </div>
+  <div class="amen-grid">
+    <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M2 17c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/><path d="M2 21c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/><path d="M6 13V5a2 2 0 0 1 2-2h2l6 6"/></svg><h4>Alberca y deck</h4></div>
+    <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2 4 10h3v10h10V10h3z"/></svg><h4>Parques y lago</h4></div>
+    <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/></svg><h4>Seguridad 24h</h4></div>
+    <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><path d="M4 12h2M18 12h2M6.5 10.5 5 8m13.5 2.5L20 8m-13.5 3L5 16m13.5-3L20 16"/></svg><h4>Gimnasio</h4></div>
+    <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="7" r="3"/><path d="M7 20c0-3 2-5 5-5s5 2 5 5"/></svg><h4>Kids zone</h4></div>
+    <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg><h4>Cancha multiusos</h4></div>
+    <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="6" cy="8" r="2"/><circle cx="10" cy="6" r="1.5"/><circle cx="14" cy="6" r="1.5"/><circle cx="18" cy="8" r="2"/><path d="M12 12c-3 0-5 2-5 5v3h10v-3c0-3-2-5-5-5z"/></svg><h4>Pet park</h4></div>
+    <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg><h4>Terraza social</h4></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow mono">Cómo comprar</div>
+    <h2>Financiamiento para cada perfil</h2>
+  </div>
+  <div class="financing">
+    <div class="fin-item">
+      <div class="mono">01 · CRÉDITO INFONAVIT</div>
+      <h4 class="serif">Infonavit</h4>
+      <p>Usa tu subcuenta de vivienda como enganche o pago total, según tu puntos acumulados.</p>
+    </div>
+    <div class="fin-item">
+      <div class="mono">02 · CRÉDITO MIXTO</div>
+      <h4 class="serif">Cofinavit</h4>
+      <p>Combina tu crédito Infonavit con un crédito bancario para acceder a un modelo más grande.</p>
+    </div>
+    <div class="fin-item">
+      <div class="mono">03 · CRÉDITO BANCARIO</div>
+      <h4 class="serif">Directo con banco</h4>
+      <p>Simulación de mensualidad personalizada según tu perfil, sin depender de tu Infonavit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section loc">
+  <div class="section-head">
+    <div class="eyebrow mono">Ubicación</div>
+    <h2>A 5 km del Centro Histórico de Querétaro</h2>
+    <p>Prolongación Constituyentes Oriente, El Marqués — dentro del corredor de mayor plusvalía de la ciudad.</p>
+  </div>
+  <div class="loc-list mono">
+    <div><span>Ecocentro Expositor</span><span>5 min</span></div>
+    <div><span>Fracc. El Mirador</span><span>Colindante</span></div>
+    <div><span>Bernardo Quintana</span><span>5 min</span></div>
+    <div><span>Centro Histórico de Querétaro</span><span>5 km</span></div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="footer-grid">
+    <div>
+      <h3 class="serif">Agenda tu visita esta semana</h3>
+      <p>Los lugares con bono de $100,000 son limitados. Escríbeme y te comparto disponibilidad, planos a detalle y una simulación de crédito con tu perfil.</p>
+    </div>
+    <div class="agent-card">
+      <div class="name">Juan Antonio Mendoza Hernández</div>
+      <div class="role">Asesor Inmobiliario · Cumbres del Marqués</div>
+      <div class="contact-line">Prol. Constituyentes Ote., El Marqués, Qro.</div>
+      <div class="contact-line">cumbresdelmarques.com.mx</div>
+      <a class="btn-primary" href="https://wa.me/524422319291?text=Hola%2C%20me%20interesa%20informaci%C3%B3n%20de%20Condominio%20Cumbre" target="_blank">Escribir por WhatsApp →</a>
+    </div>
+  </div>
+  <div class="foot-legal">*Imagen de carácter ilustrativo. Precio y proyecto sujeto a cambio sin previo aviso. Sujeto a disponibilidad. Precios de lista, sin descuento.</div>
+</footer>
+
+</body>
+</html>
